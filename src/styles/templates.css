@@ -1,0 +1,75 @@
+.templates {
+    padding: 40px 20px;
+}
+
+.templates h1 {
+    text-align: center;
+    color: #1f2937;
+}
+
+.templates p {
+    text-align: center;
+    color: #666;
+    margin: 10px 0 30px;
+}
+
+.template-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.template-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+}
+
+.template-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.template-content {
+    padding: 20px;
+}
+
+.template-content h3 {
+    margin-bottom: 10px;
+}
+
+.template-content p {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.template-content button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.template-content button:hover {
+    background: #1d4ed8;
+}
+
+/* Tablet & Desktop */
+
+@media (min-width:768px){
+
+.template-container{
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.template-card{
+    width:300px;
+}
+
+}
