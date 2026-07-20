@@ -10,6 +10,7 @@ import Portfolio from "./pages/Portfolio";
 import Reviews from "./pages/Reviews";
 import PlanWebsite from "./pages/PlanWebsite";
 import Booking from "./pages/Booking";
+import Admin from "./pages/Admin";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="/reviews" element={<Reviews />} />
         <Route path="/plan" element={<PlanWebsite />} />
         <Route path="/booking" element={<Booking />} />
+        <Route path="/admin" element={<Admin />} />
       </Routes>
 
       <Footer />

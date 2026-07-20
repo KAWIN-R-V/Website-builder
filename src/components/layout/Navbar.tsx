@@ -47,6 +47,10 @@ function Navbar() {
             <li>
                 <Link to="/booking">Book Call</Link>
             </li>
+            {/* Admin Button */}
+            <li>
+                <Link to="/admin">Admin</Link>
+            </li>
         </ul>
     </nav>
   );
