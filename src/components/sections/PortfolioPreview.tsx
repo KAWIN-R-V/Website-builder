@@ -1,30 +1,36 @@
-import "../styles/portfolio.css";
+import "../../styles/portfolio.css";
 
-import restaurant from "../assets/images/restaurant.png";
-import hospital from "../assets/images/hospital.png";
-import portfolio from "../assets/images/portfolio.png";
+import restaurant from "../../assets/images/restaurant.png";
+import hospital from "../../assets/images/hospital.png";
+import portfolio from "../../assets/images/portfolio.png";
 
 const portfolioData = [
   {
     id: 1,
     title: "Restaurant Website",
     image: restaurant,
-    description: "Modern responsive website for restaurants and cafés.",
-    tech: "React + TypeScript",
+    category: "Restaurant",
+    description:
+      "Modern restaurant website with online table booking and menu management.",
+    tech: "React • TypeScript",
   },
   {
     id: 2,
     title: "Hospital Website",
     image: hospital,
-    description: "Healthcare website with appointment booking.",
-    tech: "React + Node.js",
+    category: "Healthcare",
+    description:
+      "Professional hospital website with appointment booking and doctor profiles.",
+    tech: "React • Node.js",
   },
   {
     id: 3,
     title: "Portfolio Website",
     image: portfolio,
-    description: "Personal portfolio to showcase projects and skills.",
-    tech: "React + CSS",
+    category: "Personal",
+    description:
+      "Clean and modern portfolio website for freelancers and professionals.",
+    tech: "React • CSS",
   },
 ];
 
@@ -32,10 +38,10 @@ function Portfolio() {
   return (
     <section className="portfolio">
 
-      <h2>Our Portfolio</h2>
+      <h2>Our Recent Work</h2>
 
       <p className="portfolio-subtitle">
-        Explore some of our recent website projects.
+        A few examples of websites we've designed for our clients.
       </p>
 
       <div className="portfolio-container">
@@ -50,6 +56,10 @@ function Portfolio() {
             />
 
             <div className="portfolio-content">
+
+              <span className="portfolio-category">
+                {project.category}
+              </span>
 
               <h3>{project.title}</h3>
 

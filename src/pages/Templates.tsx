@@ -1,6 +1,6 @@
 import "../styles/templates.css";
 
-import TemplateCard from "../components/TemplateCard";
+import TemplateCard from "../components/cards/TemplateCard";
 
 import restaurant from "../assets/images/restaurant.png";
 import hospital from "../assets/images/hospital.png";

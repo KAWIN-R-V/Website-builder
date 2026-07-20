@@ -1,6 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Navbar from "./components/Navbar";
+import Navbar from "./components/layout/Navbar";
+import Footer from "./components/layout/Footer";
 
 import Home from "./pages/Home";
 import Templates from "./pages/Templates";
@@ -13,6 +14,7 @@ import Booking from "./pages/Booking";
 function App() {
   return (
     <BrowserRouter>
+
       <Navbar />
 
       <Routes>
@@ -24,6 +26,9 @@ function App() {
         <Route path="/plan" element={<PlanWebsite />} />
         <Route path="/booking" element={<Booking />} />
       </Routes>
+
+      <Footer />
+
     </BrowserRouter>
   );
 }

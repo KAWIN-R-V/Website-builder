@@ -1,8 +1,9 @@
-import Hero from "../components/Hero";
-import Services from "../components/Services";
-import WhyChooseUs from "../components/WhyChooseUs";
-import Portfolio from "../components/PortfolioPreview";
-import Testimonials from "../components/Testimonials";
+import Hero from "../components/sections/Hero";
+import Services from "../components/sections/Services";
+import WhyChooseUs from "../components/sections/WhyChooseUs";
+import Portfolio from "../components/sections/PortfolioPreview";
+import Testimonials from "../components/sections/Testimonials";
+
 
 function Home() {
   return (

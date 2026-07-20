@@ -4,7 +4,7 @@ import {
   FaTools,
 } from "react-icons/fa";
 
-import "../styles/home.css";
+import "../../styles/home.css";
 
 function Services() {
   return (
