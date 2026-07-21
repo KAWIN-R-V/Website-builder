@@ -1,8 +1,21 @@
 const BASE_URL = "http://localhost:5000/api/booking";
 
+function getAuthHeaders() {
+
+  const token = localStorage.getItem("adminToken");
+
+  return {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${token}`,
+  };
+
+}
+
 // Get all bookings
 export async function getBookings() {
-  const response = await fetch(BASE_URL);
+  const response = await fetch(BASE_URL, {
+  headers: getAuthHeaders(),
+  });
 
   if (!response.ok) {
     throw new Error("Failed to fetch bookings");
@@ -32,9 +45,7 @@ export async function createBooking(data: any) {
 export async function updateBooking(id: string, status: string) {
   const response = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: getAuthHeaders(),
     body: JSON.stringify({ status }),
   });
 
@@ -48,7 +59,8 @@ export async function updateBooking(id: string, status: string) {
 // Delete booking
 export async function deleteBooking(id: string) {
   const response = await fetch(`${BASE_URL}/${id}`, {
-    method: "DELETE",
+  method: "DELETE",
+  headers: getAuthHeaders(),
   });
 
   if (!response.ok) {

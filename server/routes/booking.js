@@ -9,16 +9,16 @@ const {
   deleteBooking,
 } = require("../controllers/bookingController");
 
-// Create Booking
+const protect = require("../middleware/authMiddleware");
+
+// Public Route
 router.post("/", createBooking);
 
-// Get All Bookings
-router.get("/", getBookings);
+// Protected Routes
+router.get("/", protect, getBookings);
 
-// Update Booking
-router.put("/:id", updateBooking);
+router.put("/:id", protect, updateBooking);
 
-// Delete Booking
-router.delete("/:id", deleteBooking);
+router.delete("/:id", protect, deleteBooking);
 
 module.exports = router;

@@ -5,6 +5,7 @@ require("dotenv").config();
 const connectDB = require("./config/db");
 
 const bookingRoutes = require("./routes/booking");
+const adminRoutes = require("./routes/admin");
 
 const app = express();
 
@@ -22,6 +23,7 @@ app.get("/", (req, res) => {
 
 // Routes
 app.use("/api/booking", bookingRoutes);
+app.use("/api/admin", adminRoutes);
 
 // Start Server
 const PORT = process.env.PORT || 5000;
