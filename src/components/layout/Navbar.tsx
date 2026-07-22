@@ -1,6 +1,14 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { FaBars, FaTimes } from "react-icons/fa";
+
+import {
+  FaBars,
+  FaTimes,
+  FaMoon,
+  FaSun,
+} from "react-icons/fa";
+
+import { useTheme } from "../../context/ThemeContext";
 
 import "../../styles/navbar.css";
 
@@ -9,14 +17,22 @@ function Navbar() {
 
   const navigate = useNavigate();
 
+  const { darkMode, toggleTheme } = useTheme();
+
   const isLoggedIn = !!localStorage.getItem("adminToken");
 
-  // Close mobile menu
+  // ==========================
+  // Close Mobile Menu
+  // ==========================
+
   const closeMenu = () => {
     setMenuOpen(false);
   };
 
+  // ==========================
   // Logout
+  // ==========================
+
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
 
@@ -30,9 +46,34 @@ function Navbar() {
   return (
     <nav className="navbar">
 
-      <div className="logo">
-        WebBuilder
+      {/* Logo + Theme Button */}
+
+      <div className="logo-container">
+
+        <div className="logo">
+          WebBuilder
+        </div>
+
+        <button
+          className="theme-toggle"
+          onClick={toggleTheme}
+          title={
+            darkMode
+              ? "Switch to Light Mode"
+              : "Switch to Dark Mode"
+          }
+          aria-label={
+            darkMode
+              ? "Light Mode"
+              : "Dark Mode"
+          }
+        >
+          {darkMode ? <FaSun /> : <FaMoon />}
+        </button>
+
       </div>
+
+      {/* Mobile Menu Icon */}
 
       <div
         className="menu-icon"
@@ -41,34 +82,53 @@ function Navbar() {
         {menuOpen ? <FaTimes /> : <FaBars />}
       </div>
 
-      <ul className={menuOpen ? "nav-links active" : "nav-links"}>
+      {/* Navigation */}
 
+      <ul
+        className={
+          menuOpen
+            ? "nav-links active"
+            : "nav-links"
+        }
+      >
         <li onClick={closeMenu}>
           <Link to="/">Home</Link>
         </li>
 
         <li onClick={closeMenu}>
-          <Link to="/templates">Templates</Link>
+          <Link to="/templates">
+            Templates
+          </Link>
         </li>
 
         <li onClick={closeMenu}>
-          <Link to="/pricing">Pricing</Link>
+          <Link to="/pricing">
+            Pricing
+          </Link>
         </li>
 
         <li onClick={closeMenu}>
-          <Link to="/portfolio">Portfolio</Link>
+          <Link to="/portfolio">
+            Portfolio
+          </Link>
         </li>
 
         <li onClick={closeMenu}>
-          <Link to="/reviews">Reviews</Link>
+          <Link to="/reviews">
+            Reviews
+          </Link>
         </li>
 
         <li onClick={closeMenu}>
-          <Link to="/plan">Plan Website</Link>
+          <Link to="/plan">
+            Plan Website
+          </Link>
         </li>
 
         <li onClick={closeMenu}>
-          <Link to="/booking">Book Call</Link>
+          <Link to="/booking">
+            Book Call
+          </Link>
         </li>
 
         {!isLoggedIn ? (
@@ -78,8 +138,12 @@ function Navbar() {
             </Link>
           </li>
         ) : (
-          <li onClick={handleLogout}>
-            Logout
+          <li>
+            <button
+              className="logout-btn"
+              onClick={handleLogout}>
+              Logout
+            </button>
           </li>
         )}
 

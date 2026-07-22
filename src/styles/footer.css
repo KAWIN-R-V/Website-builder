@@ -1,124 +1,183 @@
+/* ==========================================
+   Footer
+========================================== */
+
 .footer{
 
-background:#1f2937;
+    background: var(--card-bg);
 
-color:white;
+    color: var(--text-color);
 
-margin-top:60px;
+    margin-top: 60px;
+
+    border-top: 1px solid var(--border-color);
+
+    transition:
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease;
 
 }
+
+/* ==========================================
+   Footer Container
+========================================== */
 
 .footer-container{
 
-max-width:1200px;
+    max-width: 1200px;
 
-margin:auto;
+    margin: auto;
 
-padding:50px 20px;
+    padding: 50px 20px;
 
-display:grid;
+    display: grid;
 
-grid-template-columns:1fr;
+    grid-template-columns: 1fr;
 
-gap:40px;
+    gap: 40px;
 
 }
+
+/* ==========================================
+   Headings
+========================================== */
 
 .footer-section h2,
 .footer-section h3{
 
-margin-bottom:20px;
+    margin-bottom: 20px;
+
+    color: var(--text-color);
 
 }
+
+/* ==========================================
+   Paragraph
+========================================== */
 
 .footer-section p{
 
-line-height:1.8;
+    line-height: 1.8;
 
-color:#d1d5db;
+    color: var(--secondary-text);
 
 }
 
+/* ==========================================
+   List
+========================================== */
+
 .footer-section ul{
 
-list-style:none;
+    list-style: none;
 
-padding:0;
+    padding: 0;
 
 }
 
 .footer-section li{
 
-margin-bottom:12px;
+    margin-bottom: 12px;
 
-cursor:pointer;
+    color: var(--secondary-text);
 
-transition:.3s;
+    cursor: pointer;
+
+    transition:
+        color .3s ease,
+        transform .2s ease;
 
 }
 
 .footer-section li:hover{
 
-color:#60a5fa;
+    color: #60a5fa;
+
+    transform: translateX(4px);
 
 }
 
+/* ==========================================
+   Social Icons
+========================================== */
+
 .social-icons{
 
-display:flex;
+    display: flex;
 
-gap:18px;
+    gap: 18px;
 
-font-size:24px;
+    font-size: 24px;
 
-margin-top:15px;
+    margin-top: 15px;
 
 }
 
 .social-icons svg{
 
-cursor:pointer;
+    color: var(--text-color);
 
-transition:.3s;
+    cursor: pointer;
+
+    transition:
+        color .3s ease,
+        transform .3s ease;
 
 }
 
 .social-icons svg:hover{
 
-color:#60a5fa;
+    color: #60a5fa;
 
-transform:translateY(-3px);
+    transform: translateY(-3px);
 
 }
+
+/* ==========================================
+   Footer Bottom
+========================================== */
 
 .footer-bottom{
 
-text-align:center;
+    text-align: center;
 
-padding:20px;
+    padding: 20px;
 
-border-top:1px solid rgba(255,255,255,.1);
+    border-top: 1px solid var(--border-color);
 
-color:#d1d5db;
+    color: var(--secondary-text);
 
-}
-
-@media(min-width:768px){
-
-.footer-container{
-
-grid-template-columns:repeat(2,1fr);
+    transition:
+        color .35s ease,
+        border-color .35s ease;
 
 }
 
+/* ==========================================
+   Tablet
+========================================== */
+
+@media (min-width:768px){
+
+    .footer-container{
+
+        grid-template-columns: repeat(2,1fr);
+
+    }
+
 }
 
-@media(min-width:1024px){
+/* ==========================================
+   Desktop
+========================================== */
 
-.footer-container{
+@media (min-width:1024px){
 
-grid-template-columns:repeat(4,1fr);
+    .footer-container{
 
-}
+        grid-template-columns: repeat(4,1fr);
+
+    }
 
 }

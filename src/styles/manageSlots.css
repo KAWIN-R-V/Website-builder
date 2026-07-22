@@ -1,61 +1,271 @@
+/* ==========================================
+   Manage Slots
+========================================== */
+
 .manage-slots{
+
     width:90%;
+
     max-width:900px;
+
     margin:40px auto;
+
 }
+
+/* ==========================================
+   Heading
+========================================== */
 
 .manage-slots h1{
+
     text-align:center;
+
     margin-bottom:30px;
+
+    color:var(--text-color);
+
 }
 
+/* ==========================================
+   Slot Form
+========================================== */
+
 .slot-form{
+
     display:flex;
+
     gap:15px;
+
     margin-bottom:30px;
+
     flex-wrap:wrap;
+
 }
 
 .slot-form input{
-    padding:10px;
+
     flex:1;
+
+    min-width:180px;
+
+    padding:12px;
+
+    background:var(--input-bg);
+
+    color:var(--text-color);
+
+    border:1px solid var(--border-color);
+
+    border-radius:8px;
+
+    font-size:15px;
+
+    transition:
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease;
+
+}
+
+.slot-form input:focus{
+
+    outline:none;
+
+    border-color:#2563eb;
+
 }
 
 .slot-form button{
+
     background:#2563eb;
+
     color:white;
+
     border:none;
-    padding:10px 20px;
-    border-radius:6px;
+
+    padding:12px 22px;
+
+    border-radius:8px;
+
     cursor:pointer;
+
+    font-size:15px;
+
+    font-weight:600;
+
+    transition:
+        background-color .3s ease,
+        transform .2s ease;
+
 }
 
+.slot-form button:hover{
+
+    background:#1d4ed8;
+
+    transform:translateY(-2px);
+
+}
+
+.slot-form button:active{
+
+    transform:scale(.98);
+
+}
+
+.slot-form button:disabled{
+
+    background:#9ca3af;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+/* ==========================================
+   Slot Table
+========================================== */
+
 .slot-table{
+
     width:100%;
+
     border-collapse:collapse;
+
+    background:var(--card-bg);
+
+    border-radius:12px;
+
+    overflow:hidden;
+
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+
 }
 
 .slot-table th{
+
     background:#2563eb;
+
     color:white;
-    padding:12px;
+
+    padding:14px;
+
+    font-weight:600;
+
 }
 
 .slot-table td{
-    border:1px solid #ddd;
-    padding:12px;
+
+    padding:14px;
+
     text-align:center;
+
+    color:var(--text-color);
+
+    border-bottom:1px solid var(--border-color);
+
 }
 
+.slot-table tbody tr:hover{
+
+    background:rgba(37,99,235,.08);
+
+}
+
+/* ==========================================
+   Delete Button
+========================================== */
+
 .delete-btn{
+
     background:#ef4444;
+
     color:white;
+
     border:none;
+
     padding:8px 16px;
-    border-radius:5px;
+
+    border-radius:6px;
+
     cursor:pointer;
+
+    font-size:14px;
+
+    font-weight:500;
+
+    transition:
+        background-color .3s ease,
+        transform .2s ease;
+
 }
 
 .delete-btn:hover{
+
     background:#dc2626;
+
+    transform:translateY(-2px);
+
+}
+
+.delete-btn:active{
+
+    transform:scale(.96);
+
+}
+
+.delete-btn:disabled{
+
+    background:#9ca3af;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+}
+
+/* ==========================================
+   Mobile
+========================================== */
+
+@media(max-width:768px){
+
+    .manage-slots{
+
+        width:95%;
+
+    }
+
+    .slot-form{
+
+        flex-direction:column;
+
+    }
+
+    .slot-form input{
+
+        width:100%;
+
+    }
+
+    .slot-form button{
+
+        width:100%;
+
+    }
+
+    .slot-table{
+
+        font-size:14px;
+
+    }
+
+    .slot-table th,
+    .slot-table td{
+
+        padding:10px;
+
+    }
+
 }

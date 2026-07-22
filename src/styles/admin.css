@@ -1,3 +1,7 @@
+/* ==========================================
+   Admin Container
+========================================== */
+
 .admin-container{
     width:90%;
     max-width:1300px;
@@ -8,13 +12,18 @@
     margin-top:120px;
     text-align:center;
     font-size:22px;
+    color:var(--text-color);
 }
 
 .admin-container h1{
     text-align:center;
     margin-bottom:35px;
-    color:#1f2937;
+    color:var(--text-color);
 }
+
+/* ==========================================
+   Stats Cards
+========================================== */
 
 .stats-container{
     display:grid;
@@ -24,7 +33,8 @@
 }
 
 .stat-card{
-    background:white;
+    background:var(--card-bg);
+    color:var(--text-color);
     border-radius:16px;
     padding:25px;
     text-align:center;
@@ -50,8 +60,12 @@
 }
 
 .stat-card p{
-    color:#666;
+    color:var(--secondary-text);
 }
+
+/* ==========================================
+   Search
+========================================== */
 
 .search-box{
     display:flex;
@@ -63,7 +77,12 @@
     width:320px;
     padding:14px 18px;
     border-radius:10px;
-    border:1px solid #ddd;
+
+    background:var(--card-bg);
+    color:var(--text-color);
+
+    border:1px solid var(--border-color);
+
     font-size:15px;
 }
 
@@ -72,10 +91,17 @@
     border-color:#2563eb;
 }
 
+/* ==========================================
+   Table
+========================================== */
+
 .table-wrapper{
     overflow-x:auto;
-    background:white;
+
+    background:var(--card-bg);
+
     border-radius:15px;
+
     box-shadow:0 10px 25px rgba(0,0,0,.08);
 }
 
@@ -92,12 +118,17 @@ th{
 
 td{
     padding:18px;
-    border-bottom:1px solid #eee;
+    color:var(--text-color);
+    border-bottom:1px solid var(--border-color);
 }
 
 tbody tr:hover{
-    background:#f8fbff;
+    background:rgba(37,99,235,.08);
 }
+
+/* ==========================================
+   Status Badge
+========================================== */
 
 .status-badge{
     padding:6px 15px;
@@ -121,6 +152,10 @@ tbody tr:hover{
     color:#198754;
 }
 
+/* ==========================================
+   Buttons
+========================================== */
+
 .view-btn{
     background:#2563eb;
     color:white;
@@ -135,31 +170,37 @@ tbody tr:hover{
     background:#1d4ed8;
 }
 
+.update-btn{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.delete-btn{
+    background:#dc2626;
+    color:white;
+    border:none;
+    padding:12px 22px;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#b91c1c;
+}
+
 .no-data{
     text-align:center;
     padding:30px;
-    color:#666;
+    color:var(--secondary-text);
 }
 
-@media(max-width:768px){
-
-.search-box{
-    justify-content:center;
-}
-
-.search-box input{
-    width:100%;
-}
-
-.admin-container{
-    width:95%;
-}
-
-}
-
-/* ==========================
+/* ==========================================
    Booking Modal
-========================== */
+========================================== */
 
 .modal-overlay{
     position:fixed;
@@ -174,9 +215,15 @@ tbody tr:hover{
 .booking-modal{
     width:90%;
     max-width:650px;
-    background:white;
+
+    background:var(--card-bg);
+
+    color:var(--text-color);
+
     border-radius:16px;
+
     overflow:hidden;
+
     animation:popup .3s ease;
 }
 
@@ -225,16 +272,17 @@ to{
 
 .info-group label{
     font-size:13px;
-    color:#777;
+    color:var(--secondary-text);
     margin-bottom:6px;
 }
 
 .info-group p{
+    color:var(--text-color);
     font-weight:600;
 }
 
 .message-box{
-    grid-column:1 / -1;
+    grid-column:1/-1;
 }
 
 .modal-footer{
@@ -242,53 +290,20 @@ to{
     justify-content:flex-end;
     gap:15px;
     padding:20px;
-    border-top:1px solid #eee;
+    border-top:1px solid var(--border-color);
 }
 
-.update-btn{
-    background:#2563eb;
-    color:white;
-    border:none;
-    padding:12px 22px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-.delete-btn{
-    background:#dc2626;
-    color:white;
-    border:none;
-    padding:12px 22px;
-    border-radius:8px;
-    cursor:pointer;
-}
-
-@media(max-width:768px){
-
-.modal-content{
-    grid-template-columns:1fr;
-}
-
-.modal-footer{
-    flex-direction:column;
-}
-
-.update-btn,
-.delete-btn{
-    width:100%;
-}
-
-}
-
-/* ==========================
+/* ==========================================
    Analytics
-========================== */
+========================================== */
 
 .chart-card{
 
     margin-top:40px;
 
-    background:white;
+    background:var(--card-bg);
+
+    color:var(--text-color);
 
     border-radius:16px;
 
@@ -302,18 +317,22 @@ to{
 
     margin-bottom:20px;
 
-    color:#1f2937;
+    color:var(--text-color);
 
 }
 
 /* ==========================================
-   Dashboard Divider
+   Divider
 ========================================== */
 
 .dashboard-divider{
+
     margin:40px 0;
+
     border:none;
-    border-top:2px solid #e5e7eb;
+
+    border-top:2px solid var(--border-color);
+
 }
 
 /* ==========================================
@@ -339,7 +358,14 @@ to{
 .slot-form input{
     flex:1;
     min-width:180px;
+
     padding:10px;
+
+    background:var(--card-bg);
+
+    color:var(--text-color);
+
+    border:1px solid var(--border-color);
 }
 
 .slot-form button{
@@ -369,32 +395,47 @@ to{
 .slot-table td{
     padding:12px;
     text-align:center;
-    border-bottom:1px solid #ddd;
+    color:var(--text-color);
+    border-bottom:1px solid var(--border-color);
 }
 
-.delete-btn{
-    background:#ef4444;
-    color:white;
-    border:none;
-    padding:8px 15px;
-    border-radius:5px;
-    cursor:pointer;
-}
-
-.delete-btn:hover{
-    background:#dc2626;
-}
-
-/* Mobile */
+/* ==========================================
+   Responsive
+========================================== */
 
 @media(max-width:768px){
 
-.slot-form{
-    flex-direction:column;
-}
+    .search-box{
+        justify-content:center;
+    }
 
-.slot-table{
-    font-size:14px;
-}
+    .search-box input{
+        width:100%;
+    }
+
+    .admin-container{
+        width:95%;
+    }
+
+    .modal-content{
+        grid-template-columns:1fr;
+    }
+
+    .modal-footer{
+        flex-direction:column;
+    }
+
+    .update-btn,
+    .delete-btn{
+        width:100%;
+    }
+
+    .slot-form{
+        flex-direction:column;
+    }
+
+    .slot-table{
+        font-size:14px;
+    }
 
 }

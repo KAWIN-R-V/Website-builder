@@ -1,129 +1,215 @@
-/* ===========================
+/* ==========================================
    Booking Page
-=========================== */
+========================================== */
 
 .booking-container {
+
     max-width: 900px;
+
     margin: 40px auto;
+
     padding: 20px;
+
 }
 
 .booking-container h1 {
+
     text-align: center;
+
     color: #2563eb;
+
     margin-bottom: 10px;
+
 }
 
 .booking-container p {
+
     text-align: center;
-    color: #666;
+
+    color: var(--secondary-text);
+
     margin-bottom: 30px;
+
 }
 
-/* ===========================
-   Form
-=========================== */
+/* ==========================================
+   Booking Form
+========================================== */
 
 .booking-form {
-    background: #ffffff;
+
+    background: var(--card-bg);
+
+    color: var(--text-color);
+
     padding: 30px;
+
     border-radius: 12px;
+
     box-shadow: 0 5px 20px rgba(0,0,0,.08);
+
+    transition:
+        background-color .35s ease,
+        color .35s ease;
+
 }
 
 .booking-group {
+
     margin-bottom: 20px;
+
 }
 
 .booking-group label {
+
     display: block;
+
     margin-bottom: 8px;
+
     font-weight: 600;
+
+    color: var(--text-color);
+
 }
+
+/* ==========================================
+   Inputs
+========================================== */
 
 .booking-group input,
 .booking-group select,
 .booking-group textarea {
+
     width: 100%;
+
     padding: 12px;
-    border: 1px solid #d1d5db;
+
+    background: var(--input-bg);
+
+    color: var(--text-color);
+
+    border: 1px solid var(--border-color);
+
     border-radius: 8px;
+
     font-size: 16px;
+
     outline: none;
-    transition: .3s;
+
+    transition:
+        background-color .35s ease,
+        color .35s ease,
+        border-color .35s ease;
+
+}
+
+.booking-group input::placeholder,
+.booking-group textarea::placeholder {
+
+    color: var(--secondary-text);
+
 }
 
 .booking-group input:focus,
 .booking-group select:focus,
 .booking-group textarea:focus {
+
     border-color: #2563eb;
+
 }
 
 .booking-group textarea {
+
     resize: vertical;
+
     min-height: 120px;
+
 }
 
-/* ===========================
+/* ==========================================
    Appointment Slots
-=========================== */
+========================================== */
 
 .slot-list {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
+
 }
 
 .slot-option {
-    display: flex;
-    align-items: center;      /* Vertical center */
 
-    padding: 15px 20px;
+    display: flex;
+
+    align-items: center;
+
+    padding: 16px 20px;
 
     border: 2px solid #2563eb;
+
     border-radius: 14px;
 
-    background: #eef4ff;
+    background: var(--card-bg);
 
     cursor: pointer;
 
-    transition: 0.25s ease;
+    transition: .25s ease;
+
 }
 
 .slot-option:hover {
-    background: #e8f0ff;
+
+    background: rgba(37,99,235,.08);
+
 }
 
 .slot-option input[type="radio"] {
-    width: 16px;              /* Smaller radio button */
+
+    width: 16px;
+
     height: 16px;
 
     margin: 0;
-    margin-right: 16px;       /* Gap between radio and text */
+
+    margin-right: 18px;
 
     flex-shrink: 0;
 
     accent-color: #2563eb;
+
 }
 
 .slot-option span {
+
     font-size: 17px;
-    font-weight: 400;         /* Normal weight */
-    color: #6b7280;           /* Softer gray */
-    line-height: 1;
+
+    font-weight: 400;
+
+    color: var(--secondary-text);
+
+    line-height: 1.2;
+
 }
 
 .slot-option:has(input:checked) {
-    background: #dbeafe;
+
+    background: rgba(37,99,235,.12);
+
     border-color: #2563eb;
+
 }
 
-/* ===========================
-   Button
-=========================== */
+/* ==========================================
+   Submit Button
+========================================== */
 
 .book-btn {
+
     width: 100%;
+
     padding: 14px;
 
     border: none;
@@ -140,48 +226,84 @@
 
     cursor: pointer;
 
-    transition: .3s;
+    transition:
+        background-color .3s ease,
+        transform .2s ease;
+
 }
 
 .book-btn:hover {
+
     background: #1d4ed8;
+
+    transform: translateY(-2px);
+
+}
+
+.book-btn:active {
+
+    transform: scale(.98);
+
 }
 
 .book-btn:disabled {
+
     background: #9ca3af;
+
     cursor: not-allowed;
+
+    transform: none;
+
 }
 
-/* ===========================
+/* ==========================================
+   Loading / Empty Slot Messages
+========================================== */
+
+.booking-group p {
+
+    color: var(--secondary-text);
+
+    margin: 10px 0;
+
+}
+
+/* ==========================================
    Mobile
-=========================== */
+========================================== */
 
 @media (max-width:768px){
 
-.booking-container{
+    .booking-container{
 
-    padding:15px;
+        padding:15px;
 
-}
+    }
 
-.booking-form{
+    .booking-form{
 
-    padding:20px;
+        padding:20px;
 
-}
+    }
 
-.booking-group input,
-.booking-group select,
-.booking-group textarea{
+    .booking-group input,
+    .booking-group select,
+    .booking-group textarea{
 
-    font-size:15px;
+        font-size:15px;
 
-}
+    }
 
-.slot-option{
+    .slot-option{
 
-    padding:12px;
+        padding:14px;
 
-}
+    }
+
+    .slot-option span{
+
+        font-size:16px;
+
+    }
 
 }
