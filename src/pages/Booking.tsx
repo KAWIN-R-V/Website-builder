@@ -1,7 +1,24 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
 import "../styles/booking.css";
 
+import { createBooking } from "../api/bookingApi";
+import { getAvailableSlots } from "../api/slotApi";
+
+interface Slot {
+  _id: string;
+  date: string;
+  time: string;
+  status: string;
+}
+
 function Booking() {
+  const [slots, setSlots] = useState<Slot[]>([]);
+  const [selectedSlot, setSelectedSlot] = useState("");
+
+  const [loadingSlots, setLoadingSlots] = useState(true);
+  const [loading, setLoading] = useState(false);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -9,15 +26,39 @@ function Booking() {
     company: "",
     service: "",
     budget: "",
-    meetingDate: "",
-    meetingTime: "",
     message: "",
   });
 
-  const [loading, setLoading] = useState(false);
+  // ==============================
+  // Load Available Slots
+  // ==============================
+
+  useEffect(() => {
+    loadSlots();
+  }, []);
+
+  async function loadSlots() {
+    try {
+      setLoadingSlots(true);
+
+      const data = await getAvailableSlots();
+
+      setSlots(data.slots);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoadingSlots(false);
+    }
+  }
+
+  // ==============================
+  // Handle Input Change
+  // ==============================
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+    e: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >
   ) => {
     setFormData({
       ...formData,
@@ -25,58 +66,61 @@ function Booking() {
     });
   };
 
+  // ==============================
+  // Submit Booking
+  // ==============================
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    setLoading(true);
-
-    try {
-      const response = await fetch("http://localhost:5000/api/booking", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
-
-      if (data.success) {
-        alert("✅ Booking Created Successfully!");
-
-        setFormData({
-          name: "",
-          email: "",
-          phone: "",
-          company: "",
-          service: "",
-          budget: "",
-          meetingDate: "",
-          meetingTime: "",
-          message: "",
-        });
-      } else {
-        alert(data.message);
-      }
-    } catch (error) {
-      console.error(error);
-      alert("Server Error");
+    if (!selectedSlot) {
+      alert("Please select an appointment slot.");
+      return;
     }
 
-    setLoading(false);
+    try {
+      setLoading(true);
+
+      await createBooking({
+        ...formData,
+        slotId: selectedSlot,
+      });
+
+      alert("Booking Created Successfully!");
+
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        service: "",
+        budget: "",
+        message: "",
+      });
+
+      setSelectedSlot("");
+
+      await loadSlots();
+    } catch (error: any) {
+      alert(error.message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
     <div className="booking-container">
-
       <h1>Book a Discovery Call</h1>
 
       <p>
-        Schedule a meeting to discuss your website requirements.
+        Select an available appointment slot and complete the booking form.
       </p>
 
-      <form className="booking-form" onSubmit={handleSubmit}>
-
+      <form
+        className="booking-form"
+        onSubmit={handleSubmit}
+      >
+        {/* Name */}
         <div className="booking-group">
           <label>Name</label>
 
@@ -90,6 +134,7 @@ function Booking() {
           />
         </div>
 
+        {/* Email */}
         <div className="booking-group">
           <label>Email</label>
 
@@ -103,19 +148,21 @@ function Booking() {
           />
         </div>
 
+        {/* Phone */}
         <div className="booking-group">
-          <label>Phone Number</label>
+          <label>Phone</label>
 
           <input
             type="tel"
             name="phone"
             value={formData.phone}
             onChange={handleChange}
-            placeholder="Enter your phone number"
+            placeholder="Phone Number"
             required
           />
         </div>
 
+        {/* Company */}
         <div className="booking-group">
           <label>Company</label>
 
@@ -128,6 +175,7 @@ function Booking() {
           />
         </div>
 
+        {/* Service */}
         <div className="booking-group">
           <label>Service Required</label>
 
@@ -146,6 +194,7 @@ function Booking() {
           </select>
         </div>
 
+        {/* Budget */}
         <div className="booking-group">
           <label>Budget</label>
 
@@ -158,38 +207,9 @@ function Booking() {
           />
         </div>
 
-        <div className="date-time-container">
-
-          <div className="booking-group">
-            <label>Select Date</label>
-
-            <input
-              className="modern-input"
-              type="date"
-              name="meetingDate"
-              value={formData.meetingDate}
-              onChange={handleChange}
-              required
-            />
-          </div>
-
-          <div className="booking-group">
-            <label>Select Time</label>
-
-            <input
-              className="modern-input"
-              type="time"
-              name="meetingTime"
-              value={formData.meetingTime}
-              onChange={handleChange}
-            />
-          </div>
-
-        </div>
-
+        {/* Message */}
         <div className="booking-group">
-
-          <label>Message</label>
+          <label>Project Details</label>
 
           <textarea
             name="message"
@@ -197,7 +217,40 @@ function Booking() {
             onChange={handleChange}
             placeholder="Tell us about your project..."
           />
+        </div>
 
+        {/* Available Appointment Slots */}
+        <div className="booking-group">
+          <label>Available Appointment Slots</label>
+
+          {loadingSlots ? (
+            <p>Loading available slots...</p>
+          ) : slots.length === 0 ? (
+            <p>No appointment slots available.</p>
+          ) : (
+            <div className="slot-list">
+              {slots.map((slot) => (
+                <label
+                  key={slot._id}
+                  className="slot-option"
+                >
+                  <input
+                    type="radio"
+                    name="slot"
+                    value={slot._id}
+                    checked={selectedSlot === slot._id}
+                    onChange={() =>
+                      setSelectedSlot(slot._id)
+                    }
+                  />
+
+                  <span className="slot-text">
+                      {new Date(slot.date).toLocaleDateString()} • {slot.time}
+                  </span>
+                </label>
+              ))}
+            </div>
+          )}
         </div>
 
         <button
@@ -207,9 +260,7 @@ function Booking() {
         >
           {loading ? "Booking..." : "Book Appointment"}
         </button>
-
       </form>
-
     </div>
   );
 }

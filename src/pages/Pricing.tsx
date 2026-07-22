@@ -7,7 +7,7 @@ const pricingPlans = [
 {
 id:1,
 plan:"Starter",
-price:"$200",
+price:"$199",
 features:[
 "5 Pages",
 "Responsive Design",
@@ -18,7 +18,7 @@ features:[
 {
 id:2,
 plan:"Pro",
-price:"₹$500",
+price:"₹$499",
 features:[
 "10 Pages",
 "Booking System",
@@ -30,7 +30,7 @@ features:[
 {
 id:3,
 plan:"Growth",
-price:"$900",
+price:"$999",
 features:[
 "Unlimited Pages",
 "E-Commerce",

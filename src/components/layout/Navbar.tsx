@@ -1,8 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import "../../styles/navbar.css";
 
+import "../../styles/navbar.css";
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -11,17 +11,28 @@ function Navbar() {
 
   const isLoggedIn = !!localStorage.getItem("adminToken");
 
+  // Close mobile menu
+  const closeMenu = () => {
+    setMenuOpen(false);
+  };
+
+  // Logout
   const handleLogout = () => {
     localStorage.removeItem("adminToken");
 
-    navigate("/admin/login");
+    closeMenu();
 
-    window.location.reload();
+    navigate("/admin/login", {
+      replace: true,
+    });
   };
 
   return (
     <nav className="navbar">
-      <div className="logo">WebBuilder</div>
+
+      <div className="logo">
+        WebBuilder
+      </div>
 
       <div
         className="menu-icon"
@@ -31,55 +42,49 @@ function Navbar() {
       </div>
 
       <ul className={menuOpen ? "nav-links active" : "nav-links"}>
-        <li>
+
+        <li onClick={closeMenu}>
           <Link to="/">Home</Link>
         </li>
 
-        <li>
+        <li onClick={closeMenu}>
           <Link to="/templates">Templates</Link>
         </li>
 
-        <li>
+        <li onClick={closeMenu}>
           <Link to="/pricing">Pricing</Link>
         </li>
 
-        <li>
+        <li onClick={closeMenu}>
           <Link to="/portfolio">Portfolio</Link>
         </li>
 
-        <li>
+        <li onClick={closeMenu}>
           <Link to="/reviews">Reviews</Link>
         </li>
 
-        <li>
+        <li onClick={closeMenu}>
           <Link to="/plan">Plan Website</Link>
         </li>
 
-        <li>
+        <li onClick={closeMenu}>
           <Link to="/booking">Book Call</Link>
         </li>
 
         {!isLoggedIn ? (
-          <li>
-            <Link to="/admin/login">Admin</Link>
+          <li onClick={closeMenu}>
+            <Link to="/admin/login">
+              Admin
+            </Link>
           </li>
         ) : (
-          <>
-            <li>
-              <Link to="/admin">Dashboard</Link>
-            </li>
-
-            <li>
-              <button
-                className="logout-btn"
-                onClick={handleLogout}
-              >
-                Logout
-              </button>
-            </li>
-          </>
+          <li onClick={handleLogout}>
+            Logout
+          </li>
         )}
+
       </ul>
+
     </nav>
   );
 }

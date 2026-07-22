@@ -7,6 +7,7 @@ import SearchBar from "../components/dashboard/SearchBar";
 import BookingTable from "../components/dashboard/BookingTable";
 import BookingModal from "../components/dashboard/BookingModal";
 import AnalyticsChart from "../components/dashboard/AnalyticsChart";
+import SlotManager from "../components/dashboard/SlotManager";
 
 import {
   getBookings,
@@ -152,6 +153,10 @@ function Admin() {
         onDelete={handleDelete}
         onUpdate={handleUpdate}
       />
+
+      <hr className="dashboard-divider" />
+
+      <SlotManager />
 
     </div>
   );

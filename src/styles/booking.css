@@ -1,12 +1,17 @@
+/* ===========================
+   Booking Page
+=========================== */
+
 .booking-container {
-    max-width: 700px;
+    max-width: 900px;
     margin: 40px auto;
     padding: 20px;
 }
 
 .booking-container h1 {
     text-align: center;
-    color: #1f2937;
+    color: #2563eb;
+    margin-bottom: 10px;
 }
 
 .booking-container p {
@@ -15,136 +20,168 @@
     margin-bottom: 30px;
 }
 
+/* ===========================
+   Form
+=========================== */
+
 .booking-form {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0,0,0,.1);
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0,0,0,.08);
 }
 
 .booking-group {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 18px;
+    margin-bottom: 20px;
 }
 
 .booking-group label {
+    display: block;
     margin-bottom: 8px;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .booking-group input,
+.booking-group select,
 .booking-group textarea {
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:6px;
-    font-size:16px;
-}
-
-.booking-group textarea{
-    height:120px;
-    resize:none;
-}
-
-.book-btn{
-    width:100%;
-    padding:15px;
-    background:#2563eb;
-    color:white;
-    border:none;
-    border-radius:8px;
-    font-size:16px;
-    cursor:pointer;
-}
-
-.book-btn:hover{
-    background:#1d4ed8;
-}
-
-/* Date & Time Layout */
-
-.date-time-container{
-
-    display:flex;
-
-    flex-direction:column;
-
-    gap:20px;
-
-}
-
-/* Tablet */
-
-@media(min-width:768px){
-
-.date-time-container{
-
-flex-direction:row;
-
-}
-
-.date-time-container .booking-group{
-
-flex:1;
-
-}
-
-}
-
-/* Modern Input */
-
-.modern-input{
-
-    width:100%;
-
-    padding:15px;
-
-    border:2px solid #dbeafe;
-
-    border-radius:12px;
-
-    background:#f8fbff;
-
-    font-size:16px;
-
-    transition:.3s;
-
-}
-
-.modern-input:hover{
-
-    border-color:#2563eb;
-
-}
-
-.modern-input:focus{
-
-    outline:none;
-
-    border-color:#2563eb;
-
-    box-shadow:0 0 12px rgba(37,99,235,.25);
-
-}
-
-.booking-group select {
     width: 100%;
-    padding: 14px 16px;
-    font-size: 16px;
+    padding: 12px;
     border: 1px solid #d1d5db;
-    border-radius: 10px;
-    background: #fff;
-    color: #333;
+    border-radius: 8px;
+    font-size: 16px;
     outline: none;
-    transition: all 0.3s ease;
-    cursor: pointer;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
+    transition: .3s;
+}
 
-    /* Custom dropdown arrow */
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='%23666' viewBox='0 0 16 16'%3E%3Cpath d='M1.5 5.5l6 6 6-6' stroke='%23666' stroke-width='2' fill='none'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 16px;
+.booking-group input:focus,
+.booking-group select:focus,
+.booking-group textarea:focus {
+    border-color: #2563eb;
+}
+
+.booking-group textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ===========================
+   Appointment Slots
+=========================== */
+
+.slot-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.slot-option {
+    display: flex;
+    align-items: center;      /* Vertical center */
+
+    padding: 15px 20px;
+
+    border: 2px solid #2563eb;
+    border-radius: 14px;
+
+    background: #eef4ff;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+}
+
+.slot-option:hover {
+    background: #e8f0ff;
+}
+
+.slot-option input[type="radio"] {
+    width: 16px;              /* Smaller radio button */
+    height: 16px;
+
+    margin: 0;
+    margin-right: 16px;       /* Gap between radio and text */
+
+    flex-shrink: 0;
+
+    accent-color: #2563eb;
+}
+
+.slot-option span {
+    font-size: 17px;
+    font-weight: 400;         /* Normal weight */
+    color: #6b7280;           /* Softer gray */
+    line-height: 1;
+}
+
+.slot-option:has(input:checked) {
+    background: #dbeafe;
+    border-color: #2563eb;
+}
+
+/* ===========================
+   Button
+=========================== */
+
+.book-btn {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+
+    border-radius: 8px;
+
+    background: #2563eb;
+
+    color: white;
+
+    font-size: 17px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: .3s;
+}
+
+.book-btn:hover {
+    background: #1d4ed8;
+}
+
+.book-btn:disabled {
+    background: #9ca3af;
+    cursor: not-allowed;
+}
+
+/* ===========================
+   Mobile
+=========================== */
+
+@media (max-width:768px){
+
+.booking-container{
+
+    padding:15px;
+
+}
+
+.booking-form{
+
+    padding:20px;
+
+}
+
+.booking-group input,
+.booking-group select,
+.booking-group textarea{
+
+    font-size:15px;
+
+}
+
+.slot-option{
+
+    padding:12px;
+
+}
+
 }

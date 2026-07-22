@@ -1,71 +1,102 @@
 const BASE_URL = "http://localhost:5000/api/booking";
 
+// ======================================
+// Authorization Header
+// ======================================
 function getAuthHeaders() {
-
   const token = localStorage.getItem("adminToken");
 
   return {
     "Content-Type": "application/json",
     Authorization: `Bearer ${token}`,
   };
-
 }
 
-// Get all bookings
+// ======================================
+// Get All Bookings (Admin)
+// ======================================
 export async function getBookings() {
   const response = await fetch(BASE_URL, {
-  headers: getAuthHeaders(),
+    headers: getAuthHeaders(),
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error("Failed to fetch bookings");
+    throw new Error(data.message || "Failed to fetch bookings");
   }
 
-  return response.json();
+  return data;
 }
 
-// Create booking
-export async function createBooking(data: any) {
+// ======================================
+// Create Booking (Customer)
+// ======================================
+export async function createBooking(bookingData: {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  service: string;
+  budget: string;
+  message: string;
+  slotId: string;
+}) {
   const response = await fetch(BASE_URL, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(data),
+    body: JSON.stringify(bookingData),
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error("Failed to create booking");
+    throw new Error(data.message || "Failed to create booking");
   }
 
-  return response.json();
+  return data;
 }
 
-// Update booking status
-export async function updateBooking(id: string, status: string) {
+// ======================================
+// Update Booking Status
+// ======================================
+export async function updateBooking(
+  id: string,
+  status: string
+) {
   const response = await fetch(`${BASE_URL}/${id}`, {
     method: "PUT",
     headers: getAuthHeaders(),
-    body: JSON.stringify({ status }),
+    body: JSON.stringify({
+      status,
+    }),
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error("Failed to update booking");
+    throw new Error(data.message || "Failed to update booking");
   }
 
-  return response.json();
+  return data;
 }
 
-// Delete booking
+// ======================================
+// Delete Booking
+// ======================================
 export async function deleteBooking(id: string) {
   const response = await fetch(`${BASE_URL}/${id}`, {
-  method: "DELETE",
-  headers: getAuthHeaders(),
+    method: "DELETE",
+    headers: getAuthHeaders(),
   });
 
+  const data = await response.json();
+
   if (!response.ok) {
-    throw new Error("Failed to delete booking");
+    throw new Error(data.message || "Failed to delete booking");
   }
 
-  return response.json();
+  return data;
 }

@@ -305,3 +305,96 @@ to{
     color:#1f2937;
 
 }
+
+/* ==========================================
+   Dashboard Divider
+========================================== */
+
+.dashboard-divider{
+    margin:40px 0;
+    border:none;
+    border-top:2px solid #e5e7eb;
+}
+
+/* ==========================================
+   Slot Manager
+========================================== */
+
+.slot-manager{
+    margin-top:20px;
+}
+
+.slot-manager h2{
+    margin-bottom:20px;
+    color:#2563eb;
+}
+
+.slot-form{
+    display:flex;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.slot-form input{
+    flex:1;
+    min-width:180px;
+    padding:10px;
+}
+
+.slot-form button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.slot-form button:hover{
+    background:#1d4ed8;
+}
+
+.slot-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.slot-table th{
+    background:#2563eb;
+    color:white;
+    padding:12px;
+}
+
+.slot-table td{
+    padding:12px;
+    text-align:center;
+    border-bottom:1px solid #ddd;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 15px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+.slot-form{
+    flex-direction:column;
+}
+
+.slot-table{
+    font-size:14px;
+}
+
+}

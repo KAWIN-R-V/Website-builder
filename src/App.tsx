@@ -23,43 +23,55 @@ function App() {
 
       <Routes>
 
-        <Route path="/" element={<Home />} />
+        {/* Home */}
+        <Route
+          path="/"
+          element={<Home />}
+        />
 
+        {/* Templates */}
         <Route
           path="/templates"
           element={<Templates />}
         />
 
+        {/* Pricing */}
         <Route
           path="/pricing"
           element={<Pricing />}
         />
 
+        {/* Portfolio */}
         <Route
           path="/portfolio"
           element={<Portfolio />}
         />
 
+        {/* Reviews */}
         <Route
           path="/reviews"
           element={<Reviews />}
         />
 
+        {/* Plan Website */}
         <Route
           path="/plan"
           element={<PlanWebsite />}
         />
 
+        {/* Booking */}
         <Route
           path="/booking"
           element={<Booking />}
         />
 
+        {/* Admin Login */}
         <Route
           path="/admin/login"
           element={<AdminLogin />}
         />
 
+        {/* Admin Dashboard (Dashboard + Slot Manager) */}
         <Route
           path="/admin"
           element={

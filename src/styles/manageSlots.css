@@ -1,0 +1,61 @@
+.manage-slots{
+    width:90%;
+    max-width:900px;
+    margin:40px auto;
+}
+
+.manage-slots h1{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.slot-form{
+    display:flex;
+    gap:15px;
+    margin-bottom:30px;
+    flex-wrap:wrap;
+}
+
+.slot-form input{
+    padding:10px;
+    flex:1;
+}
+
+.slot-form button{
+    background:#2563eb;
+    color:white;
+    border:none;
+    padding:10px 20px;
+    border-radius:6px;
+    cursor:pointer;
+}
+
+.slot-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+.slot-table th{
+    background:#2563eb;
+    color:white;
+    padding:12px;
+}
+
+.slot-table td{
+    border:1px solid #ddd;
+    padding:12px;
+    text-align:center;
+}
+
+.delete-btn{
+    background:#ef4444;
+    color:white;
+    border:none;
+    padding:8px 16px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+.delete-btn:hover{
+    background:#dc2626;
+}
