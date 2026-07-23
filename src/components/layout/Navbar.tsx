@@ -33,12 +33,22 @@ function Navbar() {
   // Logout
   // ==========================
 
-  const handleLogout = () => {
+  // const handleLogout = () => {
+  //   localStorage.removeItem("adminToken");
+
+  //   closeMenu();
+
+  //   navigate("/admin/login", {
+  //     replace: true,
+  //   });
+  // };
+
+    const handleLogout = () => {
     localStorage.removeItem("adminToken");
 
     closeMenu();
 
-    navigate("/admin/login", {
+    navigate("/", {             //Destination Changed
       replace: true,
     });
   };
@@ -131,7 +141,12 @@ function Navbar() {
           </Link>
         </li>
 
-        {!isLoggedIn ? (
+
+
+        {/* Disabled the Admin button from the navbar */}
+        
+
+        {/*{!isLoggedIn ? (
           <li onClick={closeMenu}>
             <Link to="/admin/login">
               Admin
@@ -145,8 +160,19 @@ function Navbar() {
               Logout
             </button>
           </li>
-        )}
+        )}*/}
 
+
+        {isLoggedIn && (              
+            <li>
+              <button
+                className="logout-btn"
+                onClick={handleLogout}
+              >
+                Logout
+              </button>
+            </li>
+          )}                            
       </ul>
 
     </nav>
