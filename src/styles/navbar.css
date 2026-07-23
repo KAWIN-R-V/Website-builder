@@ -4,7 +4,7 @@
 
 .navbar{
 
-    /* background:var(--navbar-color); */
+    background:var(--card-bg);
 
     color:var(--text-color);
 
@@ -45,7 +45,7 @@
 
     font-weight:700;
 
-    /*color:var(--text-color);*/
+    color:var(--text-color);
 
     transition:color .35s ease;
 
@@ -136,7 +136,7 @@
 
     width:100%;
 
-    background:var(--navbar-color);
+    background:var(--card-bg);
 
     display:none;
 
@@ -170,7 +170,7 @@
 
 .nav-links li:hover{
 
-    background:rgba(37,99,235,.12);
+    background:rgba(37,99,235,.08);
 
 }
 
